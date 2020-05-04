@@ -171,6 +171,7 @@ class _FoodFormState extends State<FoodForm> {
     if (text.isNotEmpty) {
       setState(() {
         _subingredients.add(text);
+  
       });
       subingredientController.clear();
     }

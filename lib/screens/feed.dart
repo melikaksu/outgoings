@@ -12,6 +12,11 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
+
+ 
+
+
+
   @override
   void initState() {
     FoodNotifier foodNotifier = Provider.of<FoodNotifier>(context, listen: false);
@@ -47,17 +52,32 @@ class _FeedState extends State<Feed> {
       ),
       body: new RefreshIndicator(
         child: ListView.separated(
-          itemBuilder: (BuildContext context, int index) {
+             itemBuilder: (BuildContext context, int index) {
             return ListTile(
               leading: Image.network(
-                foodNotifier.foodList[index].image != null
+                      foodNotifier.foodList[index].image != null
                     ? foodNotifier.foodList[index].image
                     : 'https://www.testingxperts.com/wp-content/uploads/2019/02/placeholder-img.jpg',
                 width: 120,
                 fit: BoxFit.fitWidth,
               ),
               title: Text(foodNotifier.foodList[index].name),
-              subtitle: Text(foodNotifier.foodList[index].category),
+              subtitle: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(foodNotifier.foodList[index].category,textAlign: TextAlign.start,),
+                  Text( 
+                 foodNotifier.foodList[index].createdAt.toDate().day.toString()+"."+
+                 foodNotifier.foodList[index].createdAt.toDate().month.toString()+"."+ 
+                 foodNotifier.foodList[index].createdAt.toDate().year.toString()
+              
+          // foodNotifier.foodList[index].createdAt.toString()
+                
+                ),
+                ],
+                        
+
+              ),
               onTap: () {
                 foodNotifier.currentFood = foodNotifier.foodList[index];
                 Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
