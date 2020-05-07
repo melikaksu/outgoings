@@ -33,13 +33,14 @@ class _FoodDetailState extends State<FoodDetail> {
       return
 
         ListTile(
-          leading: Icon(
-            isDone
-            ?Icons.check_box
-            :Icons.check_box_outline_blank
-            ), onLongPress: (){
-              setState(()=> isDone = !isDone);
-            },
+          leading: GestureDetector(
+            onTap: () {setState(()=> isDone = !isDone);},
+              child: Icon(
+              isDone
+              ?Icons.check_box
+              :Icons.check_box_outline_blank
+              ),
+          ), 
           trailing: Icon(Icons.clear),
           title: Text(foodNotifier.currentFood.subIngredients[index].toString()),
         );

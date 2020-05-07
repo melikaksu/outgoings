@@ -25,6 +25,8 @@ dependencies:
   firebase_storage: ^3.1.5
   path: ^1.7.0
   uuid: ^ 2.0.4
+  get_it: ^1.0.3+2
+
 
   flutter:
     sdk: flutter
